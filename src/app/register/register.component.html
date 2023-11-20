@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div
+  style="background-image: url('assets/img/regularcleaning.jpg'); background-size: cover; opacity: 90%; height: 100vh;">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-sm-4">
+      <div class="login-form mt-3">
+        <h1 class="text-center text-dark text-bg-warning p-3 mt-3" style="border-radius: 50%;"><strong>Register</strong>
+        </h1>
+        <form #registerform="ngForm" (ngSubmit)="registerUser()">
+          <div *ngIf="msg">
+            <small [class.text-danger]="msg.includes('500')" class="text-danger">User already exists</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Enter username"
+              [(ngModel)]="user.username" required pattern="^[A-Za-z]+$" #username="ngModel"
+              [class.is-invalid]="username.invalid && username.touched" />
+            <div *ngIf="username.errors && (username.invalid && username.touched)">
+              <small class="text-danger" *ngIf="username.errors['required']">Username is required field</small>
+              <small class="text-danger" *ngIf="username.errors['pattern']">Enter the valid username</small>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="email" class="form-control" name="gmail" placeholder="Enter gmail" [(ngModel)]="user.gmail"
+              required pattern="^[a-z0-9]+@gmail\.com$" #gmail="ngModel"
+              [class.is-invalid]="gmail.invalid && gmail.touched" />
+            <div *ngIf="gmail.errors && (gmail.invalid && gmail.touched)">
+              <small class="text-danger" *ngIf="gmail.errors['required']">Gmail is required field</small>
+              <small class="text-danger" *ngIf="gmail.errors['pattern']">Enter the valid gmail</small>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="number" class="form-control" name="phoneNo" placeholder="Enter phoneNo"
+              [(ngModel)]="user.phoneNo" required pattern="^[0-9]+$" #phoneNo="ngModel"
+              [class.is-invalid]="phoneNo.invalid && phoneNo.touched" />
+            <div *ngIf="phoneNo.errors && (phoneNo.invalid && phoneNo.touched)">
+              <small class="text-danger" *ngIf="phoneNo.errors['required']">Phone number is required field</small>
+              <small class="text-danger" *ngIf="phoneNo.errors['pattern']">Enter the valid Phone number</small>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea type="text" class="form-control" name="address" placeholder="Enter address"
+              [(ngModel)]="user.address" required #address="ngModel"
+              [class.is-invalid]="address.invalid && address.touched"></textarea>
+            <div *ngIf="address.errors && (address.invalid && address.touched)">
+              <small class="text-danger" *ngIf="address.errors['required']">Address is required field</small>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="password" class="form-control" name="password" placeholder="Enter password"
+              [(ngModel)]="user.password" required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched" />
+            <div *ngIf="password.errors && (password.invalid && password.touched)">
+              <small class="text-danger" *ngIf="password.errors['required']">Password is required field</small>
+              <small class="text-danger" *ngIf="password.errors['pattern']">Enter the valid password</small>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="password" class="form-control" name="cpassword" placeholder="Enter confirm password" required
+              (ngModel)="user.password" #cpassword="ngModel"
+              [class.is-invalid]="cpassword.invalid && cpassword.touched" />
+            <small class="text-danger" [class.d-none]="(cpassword.value==password.value)|| cpassword.untouched">Password
+              and Confirm Password must be same</small>
+          </div>
+          <div class="container mt-3 d-flex justify-content-center">
+            <button type="submit" class="btn btn-light m-3" style="width: 80%"
+              [disabled]="registerform.form.invalid">Register</button>
+          </div>
+          <div class="container mt-3 d-flex justify-content-center">
+            <button class="btn btn btn-outline-warning m-3 " routerLink="/providerRegister">Register as service
+              provider</button>
+          </div>
+
+
+          <div class="container d-flex justify-content-center m-3 text-dark text-bg-warning"
+            style="border-radius: 50%;">
+            Existing User?<a class="text-light mx-1" routerLink="/login">Login</a>
+          </div>
+
+
+          <div class="container d-flex justify-content-center m-3"></div>
+          <div class="container d-flex justify-content-center m-3"></div>
+          <div class="container d-flex justify-content-center m-3"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

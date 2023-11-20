@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container-fluid h-custom">
+
+  <div class="row d-flex justify-content-center align-items-center h-100">
+
+    <div class="col-md-9 col-lg-6 col-xl-6 my-lg-5 py-lg-5">
+      <h1 class="text-center">Login to avail the services</h1>
+      <img src="assets/img/ulogin.svg" class="img-fluid" alt="Sample image">
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-5 offset-xl-1 my-lg-5 py-lg-5">
+      <div class="login-form">
+        <form #loginform="ngForm" (ngSubmit)="loginUser()">
+          <small class="text-danger">{{error}}</small>
+          <div class="form-group">
+            <label for="gmail" class="mt-3">Gmail</label>
+            <input type="email" class="form-control" name="gmail" placeholder="Enter gmail" [(ngModel)]="user.gmail"
+              required pattern="^[a-z0-9]+@gmail\.com$" #gmail="ngModel"
+              [class.is-invalid]="gmail.invalid && gmail.touched" />
+            <div *ngIf="gmail.errors && (gmail.invalid && gmail.touched)">
+              <small class="text-danger" *ngIf="gmail.errors['required']">Gmail is required field</small>
+              <small class="text-danger" *ngIf="gmail.errors['pattern']">Enter the valid gmail</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="mt-3">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter password"
+              [(ngModel)]="user.password" required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched" />
+            <div *ngIf="password.errors && (password.invalid && password.touched)">
+              <small class="text-danger" *ngIf="password.errors['required']">Password is required field</small>
+              <small class="text-danger" *ngIf="password.errors['pattern']">Enter the valid password</small>
+            </div>
+          </div>
+          <div>
+            <div class="container mt-3 d-flex justify-content-center">
+              <button type="submit" class="btn btn-outline-warning " style="width: 80%"
+                [disabled]="loginform.form.invalid">Login</button>
+            </div>
+          </div>
+
+          <div class="container mt-3">
+            New User?
+            <a class="text-warning" routerLink="/register">Register</a>
+          </div>
+          <div class="container mt-3">
+            Are You a service provider?
+            <a class="text-warning" routerLink="/providerlogin">Here you go</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

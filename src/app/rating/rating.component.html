@@ -1,0 +1,49 @@
+<div>
+  <div class="column d-flex flex-wrap m-5">
+    <div class="container">
+      <h1 class="p-3 text-center">Your views on the Services</h1>
+      <table class="table">
+
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">S.No </th>
+            <th scope="col">Date of booking</th>
+            <th scope="col">Type of Package</th>
+            <th scope="col">Provider Details</th>
+            <th scope="col">Provide Rating and Review for the service</th>
+
+          </tr>
+        </thead>
+        <tbody *ngIf="userDetails?.bookings">
+          <tr *ngFor="let booking of ubookings, let i = index">
+            <td scope="row">{{serial+i}}</td>
+            <td>{{booking.date.toString()|slice:0:10}}</td>
+            <td>{{booking.packageDetails.name}}</td>
+            <td><strong>Name: </strong> {{booking.provider.pusername}}
+              <br>
+              <strong>Gmail id: </strong>
+              {{booking.provider.pgmail}}
+              <br>
+              <strong>Contact number: </strong>
+              {{booking.provider.pphoneNo}}
+            </td>
+            <td>
+              <div class="text-center">
+                <div class="text-center mb-2"><input type="text" #reviewInput placeholder="Give your review">
+                  <input type="text" #ratingInput placeholder="Give your rating" class="">
+                </div>
+                <div><button class="btn btn-outline-dark"
+                    (click)="userreviewrating(booking, reviewInput.value, ratingInput.value)">Submit</button></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!userDetails?.bookings">
+          <tr>
+            <td colspan="4">No bookings available</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

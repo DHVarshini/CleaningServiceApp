@@ -1,0 +1,48 @@
+<div>
+    <div class="column d-flex flex-wrap m-5">
+      <div class="container">
+        <h1 class="p-3 text-center">Your bookings</h1>
+          <table class="table">
+            
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">S.No </th>
+                  <th scope="col">Date of booking</th>
+                  <th scope="col">Time Slot</th>
+                  <th scope="col">Type of Package</th>
+                  <th scope="col">Customer Details</th>
+                  <th scope="col">Customer Review and Ratings</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="providerDetails?.pbookings">
+                <tr *ngFor="let booking of pbookings, let i = index" >
+                  <td scope="row">{{serial+i}}</td>
+                  <td>{{booking.date.toString()|slice:0:10}}</td>
+                  <td>{{booking.timeSlot}}</td>
+                  <td>{{booking.packageDetails.name}}</td>
+                  <td><strong>Name: </strong> {{booking.user.username}}
+                    <br> 
+                    <strong>Gmail id: </strong>
+                     {{booking.user.gmail}}
+                    <br>
+                    <strong>Contact number: </strong>
+                    {{booking.user.phoneNo}}
+                  </td>
+                  <td><strong>Rating: </strong>    {{booking.rating}}
+                    <br>
+                    <strong>Review: </strong> 
+                    {{booking.reviews}}
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="!providerDetails?.pbookings">
+                  <tr>
+                    <td colspan="4">No bookings available</td>
+                  </tr>
+                </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+  
+  

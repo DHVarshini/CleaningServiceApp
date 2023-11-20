@@ -1,0 +1,100 @@
+<h1 mat-dialog-title class="text-center border border-warning p-3">Select service category type and time slot to book
+  the Service</h1>
+<div mat-dialog-content>
+  <div class="row g-0">
+    <div class="col-md-4 col-12 d-flex justify-content-center align-items-center">
+    </div>
+    <div class="title-col">
+      <h2 class="card-title">{{PackageDetails.name}}</h2>
+    </div>
+  </div>
+  <p class="card-text">
+    <strong>Floor Cleaning:</strong>
+  <ul>
+    <li>{{PackageDetails.desc.FloorCleaning}}</li>
+  </ul>
+
+  <p class="card-text">
+    <strong>Kitchen Cleaning:</strong>
+  <ul>
+    <li>{{PackageDetails.desc.KitchenCleaning}}</li>
+  </ul>
+
+  <p class="card-text">
+    <strong>Bathroom Cleaning:</strong>
+  <ul>
+    <li>{{PackageDetails.desc.BathroomCleaning}}</li>
+  </ul>
+  <h1 mat-dialog-title class="text-center title-col text-light">Select a service category types</h1>
+  <div class="d-flex justify-content-around align-items-center mb-2">
+    <div class="form-check" [(ngModel)]="type">
+      <input class="form-check-input text-bg-secondary" type="radio" name="flexRadioDefault"
+        id="{{PackageDetails.price.residential}}" checked [value]="PackageDetails.price.residential">
+      <label class="form-check-label" for="{{PackageDetails.price.residential}}">
+        Residential: {{PackageDetails.price.residential}}/-
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input text-bg-secondary" type="radio" name="flexRadioDefault" id="commercial"
+        [value]="PackageDetails.price.commercial">
+      <label class="form-check-label" for="commercial">
+        Commercial: {{PackageDetails.price.commercial}}/-
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input text-bg-secondary" type="radio" name="flexRadioDefault" id="specialized"
+        [value]="PackageDetails.price.specialized">
+      <label class="form-check-label" for="specialized">
+        Specialized: {{PackageDetails.price.specialized}}/-
+      </label>
+    </div>
+  </div>
+  <div>
+    <h1 mat-dialog-title class="text-center title-col text-light">Select the date</h1>
+    <div class="d-flex justify-content-center m-3">
+      <input type="date" class="form-control datepicker" placeholder="Select date" [(ngModel)]="selectedDate">
+    </div>
+    <div>
+      <h1 mat-dialog-title class="text-center title-col text-light mt-3">Select a time slot</h1>
+      <div class="d-flex justify-content-around mt-3">
+        <button class="btn btn-outline-warning" (click)="timings='morning'">Morning</button>
+        <button class="btn btn-outline-warning" (click)="timings='afternoon'">Afternoon</button>
+        <button class="btn btn-outline-warning" (click)="timings='evening'">Evening</button>
+      </div>
+
+      <div id="morningtimings" class="d-flex justify-content-center align-items-center mt-3 mx-3 gap-2 flex-wrap"
+        *ngIf="timings==='morning'">
+        <ng-container *ngFor="let timing of userService.mrng">
+          <button class="btn btn-outline-dark" (click)="selectedTiming=timing">{{timing}}</button>
+        </ng-container>
+      </div>
+
+      <div id="afternoontimings" class="d-flex justify-content-center align-items-center mt-3 mx-3 gap-2 flex-wrap"
+        *ngIf="timings==='afternoon'">
+        <ng-container *ngFor="let timing of userService.aft">
+          <button class="btn btn-outline-dark" (click)="selectedTiming=timing">{{timing}}</button>
+        </ng-container>
+      </div>
+
+      <div id="eveningtimings" class="d-flex justify-content-center align-items-center mt-3 mx-3 gap-2 flex-wrap"
+        *ngIf="timings==='evening'">
+        <ng-container *ngFor="let timing of userService.evn">
+          <button class="btn btn-outline-dark" (click)="selectedTiming=timing">{{timing}}</button>
+        </ng-container>
+      </div>
+    </div>
+    <div>
+      <h1 mat-dialog-title class="title-col text-light mt-3 form-check-inline">Select a Service Provider</h1>
+      <div class="d-flex mt-3 justify-content-start" *ngFor="let provider of Provider">
+        <div class="form-check">
+          <input class="form-check-input text-bg-secondary" type="radio" name="provider" id="{{provider.psid}}"
+            [(ngModel)]="selectedProvider" [value]="provider">
+          <label class="form-check-label" for="{{provider.psid}}">
+            <strong>Name of the service provider: </strong>{{provider.pusername}}
+          </label>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions class="d-flex justify-content-center mt-3">
+      <button mat-button class="btn btn-dark" (click)="selectedDetails()">Book</button>
+    </div>

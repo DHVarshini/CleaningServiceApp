@@ -1,0 +1,35 @@
+<div>
+  <div class="column d-flex flex-wrap m-5">
+    <div class="card w-100 shadow-sm mt-5" *ngFor="let packageDetails of PackageDetails">
+      <div class="card-body ">
+        <div class="p-3">
+          <h1 class="card-text text-center">{{packageDetails.name}}</h1>
+        </div>
+        <div class="d-flex justify-content-around">
+          <div>
+            <p class="card-text">
+              <strong>Floor Cleaning:</strong>
+            <ul>
+              <li *ngFor="let floor of packageDetails.desc.FloorCleaning">{{floor}}</li>
+            </ul>
+            <p class="card-text">
+              <strong>Kitchen Cleaning:</strong>
+            <ul>
+              <li *ngFor="let kitchen of packageDetails.desc.KitchenCleaning">{{kitchen}}</li>
+            </ul>
+            <p class="card-text">
+              <strong>Bathroom Cleaning:</strong>
+            <ul>
+              <li *ngFor="let bathroom of packageDetails.desc.BathroomCleaning">{{bathroom}}</li>
+            </ul>
+            <button type="button" class="btn btn-outline-warning" (click)="Openpopup(packageDetails.val)"
+              style="width: 80%">Book Now</button>
+            <p class="p-3"><button class="circle"></button><button class="circle"></button><button
+                class="circle"></button>Starts from Rs.{{packageDetails.price.residential}}/- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
