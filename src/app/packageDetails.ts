@@ -1,5 +1,5 @@
 export class PackageDetails{
-    spid!:number;
+    spid!:string;
     name!:string;
     desc!:desc;
     price!:price;

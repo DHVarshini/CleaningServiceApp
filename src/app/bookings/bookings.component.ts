@@ -27,12 +27,12 @@ export class BookingsComponent {
         console.log(this.userDetails.bookings.psid);
         this.userbookings = this.userDetails.bookings;
         for (let booking of this.userbookings) {
+          //fetching package details thro' id
           this.userservice.
             getPackageById(booking.spid).subscribe(
               data => {
                 this.packageDetails = data;
-
-                //provider
+                //fetching provider details thro' id
                 this.userservice.getCurrentProvider(booking.psid).subscribe(
                   (data) => {
                     this.provider = data;
@@ -46,7 +46,6 @@ export class BookingsComponent {
             );
         }
       },
-
       error => console.log(error)
     );
   }

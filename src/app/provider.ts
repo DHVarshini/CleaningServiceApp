@@ -8,7 +8,6 @@ export class Provider{
     pphoneNo!:number;
     paddress!:string;
     ppassword!:string;
-    //pbookings!:Bookings;
     pbookings: Bookings[] = [];
     User!:User;
     constructor(){}

@@ -10,31 +10,17 @@ import { BookComponent } from '../book/book.component';
   styleUrls: ['./package-cards.component.css']
 })
 export class PackageCardsComponent implements OnInit {
-
   PackageDetails: PackageDetails[] = [];
-
   constructor(private userService: UserService, private dialog: MatDialog, private router: Router) { }
-
   ngOnInit(): void {
     this.fetchPackageDetails();
   }
-
   fetchPackageDetails() {
     this.userService.fetchServicePackagesFromRemote().subscribe(
       data => {
         this.PackageDetails = data;
       },
       error => console.log(error));
-  }
-  openDialog(KnowMoreComponent: any): void {
-    const dialogRef = this.dialog.open(KnowMoreComponent, {
-      width: '500px',
-      data: KnowMoreComponent
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
   Openpopup(val: string) {
     this.dialog.open(BookComponent, {

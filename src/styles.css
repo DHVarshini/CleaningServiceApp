@@ -364,16 +364,16 @@ a {
 
 
 
-  .about .content h3 {
+  .about .content h3, .whatwedo {
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
     padding: 10px 20px;
-    background: rgba(var(--primary-color-rgb), 0.05);
-    color: var(--primary-color);
+    background: #FFCC00;
     border-radius: 7px;
     display: inline-block;
   }
+  .ul li { font-size: 18px; line-height: 1.5; margin-bottom: 10px; }
   .circle-block {
     width: 36px;
     height: 36px;
@@ -385,13 +385,12 @@ a {
     line-height: 21px;
     margin-right: 28px;
 }
-.about .content h3 {
+.about .content h3,.whatwedo {
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
     padding: 10px 20px;
     background: #FFCC00;
-    color: var(--primary-color);
     border-radius: 7px;
     display: inline-block;
     opacity: 70%;

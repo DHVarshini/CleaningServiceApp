@@ -21,6 +21,7 @@ export class ProviderBookingsComponent {
   providerbookings!: any;
   constructor(private userservice: UserService) {
     //console.log(userservice.currProvider);
+    //fetching current provider details thro' id
     this.userservice.getCurrentProvider(this.userservice.currProvider).subscribe(
       data => {
         console.log(userservice.currProvider);

@@ -6,7 +6,6 @@ import { RegisterComponent } from './register/register.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { ProviderRegisterComponent } from './provider-register/provider-register.component';
-import { AboutComponent } from './about/about.component';
 import { ProviderLoginComponent } from './provider-login/provider-login.component';
 import { PackageCardsComponent } from './package-cards/package-cards.component';
 import { BookComponent } from './book/book.component';

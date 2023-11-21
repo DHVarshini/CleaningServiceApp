@@ -69,12 +69,12 @@ export class BookComponent {
 
     this.userService.postData(this.selectedDate, this.selectedTiming, this.val, this.providerId).subscribe(
       (response) => {
-        window.alert('Are you sure you want to confirm the bookings')
+        window.alert('Booking created successfully')
       });
 
     this.userService.postDataInProvider(this.selectedDate, this.selectedTiming, this.val, this.userId, this.reviews, this.rating).subscribe(
       (response) => {
-        window.alert('Booking created successfully')
+        window.alert('Are you sure you want to confirm the bookings')        
       });
 
     this.selectedDate = new Date();
@@ -91,7 +91,7 @@ export class BookComponent {
   }
 
   fetchPackageDetails() {
-    this.userService.fetchServicePackagesByIdFromRemote().subscribe(
+    this.userService.fetchServicePackagesFromRemote().subscribe(
       data => {
         this.PackageDetails = data;
       },
@@ -104,6 +104,4 @@ export class BookComponent {
       },
       error => console.log(error));
   }
-
-
 }
